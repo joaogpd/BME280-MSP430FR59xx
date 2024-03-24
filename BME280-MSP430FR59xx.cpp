@@ -74,7 +74,7 @@ uint8_t BME280::begin(void)
 
     // Initialize the chip select pin
     GPIO_setAsOutputPin(settings.csPort, settings.csPin);
-    GPIO_setOutputHighOnPin(csPsettings.csPortort, settings.csPin);
+    GPIO_setOutputHighOnPin(settings.csPort, settings.csPin);
 
     // Check communication with IC before anything else
     uint8_t chipID = readRegister(BME280_CHIP_ID_REG); //Should return 0x60 or 0x58
@@ -318,7 +318,7 @@ float BME280::readFloatPressure(void)
     var2 = var2 + (((int64_t)calibration.dig_P4)<<35);
     var1 = ((var1 * var1 * (int64_t)calibration.dig_P3)>>8) + ((var1 * (int64_t)calibration.dig_P2)<<12);
     var1 = (((((int64_t)1)<<47)+var1))*((int64_t)calibration.dig_P1)>>33;
-    if (var1 == 0) return 0 // avoid exception caused by division by zero
+    if (var1 == 0) return 0; // avoid exception caused by division by zero
     p_acc = 1048576 - adc_P;
     p_acc = (((p_acc<<31) - var2)*3125)/var1;
     var1 = (((int64_t)calibration.dig_P9) * (p_acc>>13) * (p_acc>>13)) >> 25;
