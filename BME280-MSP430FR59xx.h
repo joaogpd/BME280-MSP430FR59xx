@@ -26,7 +26,7 @@ Distributed as-is; no warranty is given.
 #ifndef __BME280_H__
 #define __BME280_H__
 
-#include <MSP430FR59xx-SPI.h>
+#include <SPI-MSP430FR59xx.h>
 #include <driverlib.h>
 
 #define SPI_MODE 1
