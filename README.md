@@ -1,5 +1,7 @@
 This library provides a port of [SparkFun's BME280 Arduino library](https://github.com/sparkfun/SparkFun_BME280_Arduino_Library) for the MSP430FR59xx family of boards.
 
+Examples will be provided soon, for easy testing and usage of the library.
+
 Contrary to the original implementation, only the SPI communication is currently supported, through using the [MSP430FR59xx-SPI library](), by joaogpd. An I2C interface may be added
 at a later date. 
 
